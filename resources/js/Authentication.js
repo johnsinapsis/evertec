@@ -1,4 +1,5 @@
 import crypto from 'crypto'
+import moment from 'moment'
 
 /**
  * Generates authentication data in order to communicate with PlacetoPay Web Checkout service
@@ -25,10 +26,13 @@ function RedirectionAuth(login, tranKey) {
     var _seed;
 
     this.generate = function() {
-        _nonce = Math.random().toString(36).substring(7);
-        _seed = (new Date()).toISOString();
+        _nonce = Math.random().toString(32);
+        //_nonce = "WmEyvut9GgvcMWrV";
+        _seed = moment().format();
         return self;
     };
+
+    
 
     this.getRealNonce = function() {
         return _nonce;
@@ -40,7 +44,7 @@ function RedirectionAuth(login, tranKey) {
 
     this.nonce = function() {
         let buff = new Buffer(_nonce)
-        return _nonce
+        //return _nonce
         return buff.toString('base64');
     };
 
@@ -49,18 +53,17 @@ function RedirectionAuth(login, tranKey) {
     };
 
     this.tranKey = function() {
-        let sha1 = crypto.createHash('sha1').update(_nonce + _seed + tranKey).digest('hex');
+        let sha1 = crypto.createHash('sha1').update(_nonce + _seed + tranKey).digest();
         let buff = new Buffer(sha1)
         return buff.toString('base64')
-        //return crypto.createHash('sha1').update(_nonce + _seed + tranKey).digest('b64').toString('base64');
     };
 
     this.asObject = function() {
         return {
             login: self.login(),
-            tranKey: "9FTXH4wQFd0IocF+K91D+GYBmsc=",
-            seed: "2021-01-22T20:51:49-05:00=",
-            nonce: "WTJZNFl6azBPV05qWldOaU0yWTFaamN3TlRNME5qTXhaVFkxT1RJeE16Yz0="
+            tranKey: self.tranKey(),
+            nonce: self.nonce(),
+            seed: self.seed(),
         }
     };
 

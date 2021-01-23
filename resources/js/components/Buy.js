@@ -7,13 +7,13 @@ const Buy = () =>{
         
     }) */
     var authGenerator = new RedirectionAuth(login,tranKey)
-    //var auth = authGenerator.generate().asObject();
-    var auth = {
-        login: login,
-        tranKey: "9FTXH4wQFd0IocF+K91D+GYBmsc=",
-        seed: "2021-01-22T20:51:49-05:00=",
-        nonce: "WTJZNFl6azBPV05qWldOaU0yWTFaamN3TlRNME5qTXhaVFkxT1RJeE16Yz0="
-    }
+    var auth = authGenerator.generate().asObject();
+    /* var auth = {
+        login: "6dd490faf9cb87a9862245da41170ff2",
+        tranKey: "e93Lky4o28//RwBENg8+jFPH1rY=",
+        nonce: "WmpNNE5ESmhNRFE1T1RBM1pEa3laRGt4TVRRNVl6YzRNamd6WldSaFlqaz0=",
+        seed: "2021-01-23T10:12:45-05:00"
+    } */
     //var auth = {}
     //var auth = authGenerator.generate();
     /* var nonce = Math.random().toString(36).substring(7)
@@ -42,13 +42,14 @@ const Buy = () =>{
             },
             allowPartial:false
         }
-        let expiration="2021-01-23T18:12:20-05:00"
+        let expiration="2021-01-24T09:43:57-05:00"
         let returnUrl = urlBase+'/home/detail'
         let userAgent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36"
         let ipAddress="127.0.0.1"
         let buyRequest = {auth,locale:"en_US",buyer,payment,expiration,returnUrl,userAgent,ipAddress}
         //setSessionBuy(buyRequest);
         console.log(buyRequest);
+        //console.log(JSON.stringify(buyRequest));
         let apiPay = "https://test.placetopay.com/redirection/api/session/"
         let parameters = {
             method:'POST',
