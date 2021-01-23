@@ -12,4 +12,34 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Example');
+//require('./components/Example');
+
+//import './components/Example'
+
+import React  from 'react'
+import ReactDOM from 'react-dom';
+import {BrowserRouter, Route} from 'react-router-dom'
+import Main from './components/Example'
+import Buy from './components/Buy'
+import OrderDetail from './components/OrderDetail'
+
+function App() {
+    const urlBase = '/evertec/public/home'
+    return (
+        <BrowserRouter>
+            <Route path={urlBase} exact>
+                <Main url={urlBase} user={user}></Main>
+            </Route>
+            <Route path={`${urlBase}/buy`} exact component={Buy}></Route>
+            <Route path={`${urlBase}/detail`} exact component={OrderDetail}></Route>
+        </BrowserRouter>
+    );
+  }
+
+  
+  export default App;
+
+  if (document.getElementById('example')) {
+    console.log("prueba")
+    ReactDOM.render(<App/>, document.getElementById('example'));
+}

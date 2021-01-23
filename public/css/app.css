@@ -10944,3 +10944,21 @@ a.text-dark:focus {
   }
 }
 
+.title {
+  color: green;
+  font-size: 1.2rem;
+}
+
+.title h1 {
+  font-size: 2.3rem;
+}
+
+li {
+  list-style: none;
+}
+
+.detail {
+  font-size: 2rem;
+  text-align: center;
+}
+

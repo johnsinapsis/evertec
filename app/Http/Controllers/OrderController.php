@@ -29,4 +29,9 @@ class OrderController extends Controller
         ]);
         return response()->json($order->load('user'),201);
     }
+
+    public function urlReturn(Request $request){
+        $response = $request;
+        dd($response);
+    }
 }
