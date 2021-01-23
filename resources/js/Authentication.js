@@ -27,7 +27,6 @@ function RedirectionAuth(login, tranKey) {
 
     this.generate = function() {
         _nonce = Math.random().toString(32);
-        //_nonce = "WmEyvut9GgvcMWrV";
         _seed = moment().format();
         return self;
     };
@@ -44,7 +43,6 @@ function RedirectionAuth(login, tranKey) {
 
     this.nonce = function() {
         let buff = new Buffer(_nonce)
-        //return _nonce
         return buff.toString('base64');
     };
 

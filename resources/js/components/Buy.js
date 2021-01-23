@@ -1,26 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import RedirectionAuth from '../Authentication'
 const Buy = () =>{
-    //const [sessionBuy,setSessionBuy] = useState()
-    //const [sessionBuy,setSessionBuy] = useState()
-    /* useEffect(()=>{
-        
-    }) */
+   
     var authGenerator = new RedirectionAuth(login,tranKey)
     var auth = authGenerator.generate().asObject();
-    /* var auth = {
-        login: "6dd490faf9cb87a9862245da41170ff2",
-        tranKey: "e93Lky4o28//RwBENg8+jFPH1rY=",
-        nonce: "WmpNNE5ESmhNRFE1T1RBM1pEa3laRGt4TVRRNVl6YzRNamd6WldSaFlqaz0=",
-        seed: "2021-01-23T10:12:45-05:00"
-    } */
-    //var auth = {}
-    //var auth = authGenerator.generate();
-    /* var nonce = Math.random().toString(36).substring(7)
-    var seed = (new Date()).toISOString() */
+    
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const clickBtnBuy = () =>{
-        console.log(auth)
+        //console.log(auth)
         let buyer = {
             document:"1040030020",
             documentType:"CC",
@@ -47,9 +34,7 @@ const Buy = () =>{
         let userAgent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36"
         let ipAddress="127.0.0.1"
         let buyRequest = {auth,locale:"en_US",buyer,payment,expiration,returnUrl,userAgent,ipAddress}
-        //setSessionBuy(buyRequest);
         console.log(buyRequest);
-        //console.log(JSON.stringify(buyRequest));
         let apiPay = "https://test.placetopay.com/redirection/api/session/"
         let parameters = {
             method:'POST',
@@ -60,6 +45,9 @@ const Buy = () =>{
             .then(res => res.json())
             .then((data)=>{
                 console.log(data)
+                /* if(data.status.status=="OK"){
+                    //window.location = data.processUrl
+                } */
             })
             .catch((error) => console.log(error))
         
