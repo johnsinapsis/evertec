@@ -47,7 +47,16 @@ const Buy = () =>{
                 console.log(data)
                 /* if(data.status.status=="OK"){
                     //window.location = data.processUrl
-                } */
+                    fetch(urlBase+'/api/create_order',{
+                        method: 'POST',
+                        headers:{'Content-Type': 'application/json'}, 
+                        body: JSON.stringify({user_id:user.id, url: data.processUrl, request_id: data.requestID})
+                    })
+                        .then(res => res.json())
+                        .then((order) =>{
+                            console.log(order)
+                        })
+                }  */
             })
             .catch((error) => console.log(error))
         

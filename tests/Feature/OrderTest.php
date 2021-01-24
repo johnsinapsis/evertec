@@ -15,17 +15,19 @@ class OrderTest extends TestCase
         auth()->login($user);
         $response = $this->json('POST','/api/create_order',[
             'user_id' => 1,
-            'url' => 'https://test.placetopay.com/redirection/session/446840/741a2fa8cb3e01e689782603e71b218e'
+            'url' => 'https://test.placetopay.com/redirection/session/446840/741a2fa8cb3e01e689782603e71b218e',
+            'request_id' => '5454654'
             ]);
         $response->assertStatus(201)
             ->assertJsonStructure([
                 'id','user' => [
                     'id','name','email','phone'
                     ],
-                    'status','url','created_at','updated_at']);
+                    'status','request_id','url','created_at','updated_at']);
             $this->assertDatabaseHas('orders',[
                 'user_id' => 1,
-                'url' => 'https://test.placetopay.com/redirection/session/446840/741a2fa8cb3e01e689782603e71b218e'
+                'url' => 'https://test.placetopay.com/redirection/session/446840/741a2fa8cb3e01e689782603e71b218e',
+                'request_id' => '5454654'
             ]);
     }
     
@@ -33,14 +35,14 @@ class OrderTest extends TestCase
     {
         $user = User::where('id',1)->firstOrFail();
         auth()->login($user);
-        $response = $this->json('POST','/api/order',['id' => 1]);
+        $response = $this->json('POST','/api/order',['request_id' => 447319]);
 
         $response->assertStatus(200)
                 ->assertJsonStructure([
                     'id','user' => [
                         'id','name','email','phone'
                         ],
-                        'status','url','created_at','updated_at']);
+                        'status','request_id','url','created_at','updated_at']);
         
         
     }
@@ -54,7 +56,7 @@ class OrderTest extends TestCase
             'user' => [
                 'id','name','email','phone'
                 ],
-            'status','url','created_at','updated_at']];
+            'status','request_id','url','created_at','updated_at']];
         $response->assertStatus(200)
                 ->assertJsonStructure($structure);
         $this->assertCount(3,$response->json());
@@ -69,7 +71,7 @@ class OrderTest extends TestCase
             'user' => [
                 'id','name','email','phone'
                 ],
-            'status','url','created_at','updated_at']];
+            'status','request_id','url','created_at','updated_at']];
         $response->assertStatus(200)
                 ->assertJsonStructure($structure);
         $this->assertGreaterThan(2,count($response->json()));

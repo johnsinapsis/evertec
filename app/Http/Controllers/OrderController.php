@@ -12,7 +12,7 @@ class OrderController extends Controller
         return response()->json($orders->load('user'),200);
     }
     public function show(Request $request){
-        $order = Order::where('id',$request->id)->firstOrFail();
+        $order = Order::where('request_id',$request->request_id)->firstOrFail();
         return response()->json($order->load('user'),200);
     }
 
@@ -25,6 +25,7 @@ class OrderController extends Controller
         $order = Order::create([
             'user_id' => $request->user_id,
             'status' => 'CREATED',
+            'request_id' => $request->request_id,
             'url'=> $request->url
         ]);
         return response()->json($order->load('user'),201);

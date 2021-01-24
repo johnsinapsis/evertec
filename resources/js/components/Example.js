@@ -23,6 +23,11 @@ function Example({user,url}) {
                                         Comprar
                                     </Link>
                                 </li>
+                                <li>
+                                    <Link to={`${url}/detail/1`}>
+                                        Orden de prueba
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </div>

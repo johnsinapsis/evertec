@@ -31,7 +31,7 @@ function App() {
                 <Main url={urlBase} user={user}></Main>
             </Route>
             <Route path={`${urlBase}/buy`} exact component={Buy}></Route>
-            <Route path={`${urlBase}/detail`} exact component={OrderDetail}></Route>
+            <Route path={`${urlBase}/detail/:id`} exact component={OrderDetail}></Route>
         </BrowserRouter>
     );
   }
