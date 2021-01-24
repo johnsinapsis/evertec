@@ -30,9 +30,16 @@ class OrderController extends Controller
         ]);
         return response()->json($order->load('user'),201);
     }
-
-    public function urlReturn(Request $request){
-        $response = $request;
-        dd($response);
+    
+    public function update(Request $request){
+        $order = Order::where('id',$request->id)->update([
+            'status' => $request->status,
+            'request_id' => $request->request_id,
+            'url'=> $request->url
+        ]);
+        $order = Order::where('id',$request->id)->firstOrFail();
+        return response()->json($order->load('user'),201);
     }
+
+    
 }

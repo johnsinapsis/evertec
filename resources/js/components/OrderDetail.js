@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
 const OrderDetail = (props) => {
-    console.log(props)
+    //console.log(props)
+    const id = parseInt(props.match.params.id)
+    console.log(id)
     return(
         <div className="container">
             <div className="row justify-content-center">

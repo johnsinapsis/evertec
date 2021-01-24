@@ -40,6 +40,6 @@ function App() {
   export default App;
 
   if (document.getElementById('example')) {
-    console.log("prueba")
+    //console.log("prueba")
     ReactDOM.render(<App/>, document.getElementById('example'));
 }

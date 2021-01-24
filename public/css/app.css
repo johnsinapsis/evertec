@@ -10962,3 +10962,13 @@ li {
   text-align: center;
 }
 
+fieldset {
+  border: 2px solid green;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+legend {
+  width: 34%;
+}
+

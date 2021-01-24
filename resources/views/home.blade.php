@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<input id="token" type="hidden" name="_token" value="{{ csrf_token() }}"/>
 <div id="example"></div>
 {{-- <div class="container">
     <div class="row justify-content-center">
@@ -34,7 +35,8 @@
     }
     var login = '6dd490faf9cb87a9862245da41170ff2'
     var tranKey = '024h1IlD'
-    
-    //console.log(user);
+    var token = document.getElementById('token').value
+    //headers:{'X-CSRF-TOKEN':$("#token").val()},
+    console.log(token);
 </script>
 @endsection
