@@ -15,19 +15,19 @@ function Example({user,url}) {
                                 {
                                     user &&
                                     user.role===1 &&
-                                    <li>Ver Todas las órdenes</li>
+                                    <li>
+                                        <Link to={`${url}/orders_list`}>
+                                            Ver Todas las órdenes
+                                        </Link>
+                                    </li>
                                 }
-                                <li>Ver Mis órdenes</li>
-                                <li>
-                                    <Link to={`${url}/buy`}>
-                                        Comprar
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to={`${url}/detail/1`}>
-                                        Orden de prueba
-                                    </Link>
-                                </li>
+                                {/* <li>Ver Mis órdenes</li> */}
+                                    <li>
+                                        <Link to={`${url}/buy`}>
+                                            Comprar
+                                        </Link>
+                                    </li>
+                                
                             </ul>
                         </div>
                     </div>

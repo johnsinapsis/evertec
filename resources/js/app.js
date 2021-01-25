@@ -22,6 +22,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import Main from './components/Example'
 import Buy from './components/Buy'
 import OrderDetail from './components/OrderDetail'
+import OrdersList from './components/OrdersList'
 
 function App() {
     const urlBase = '/evertec/public/home'
@@ -32,6 +33,7 @@ function App() {
             </Route>
             <Route path={`${urlBase}/buy`} exact component={Buy}></Route>
             <Route path={`${urlBase}/detail/:id`} exact component={OrderDetail}></Route>
+            <Route path={`${urlBase}/orders_list`} exact component={OrdersList}></Route>
         </BrowserRouter>
     );
   }
