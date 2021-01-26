@@ -122,7 +122,7 @@ const OrderDetail = (props) => {
                     {
                         order && order.status==='CREATED' ?
                         <div className="row d-flex align-content-center justify-content-center">
-                            <button className="btn btn-success btn-lg" onClick={clickBtnBuy}>Reintentar</button>
+                            <button className="btn btn-orange btn-lg" onClick={clickBtnBuy}>Reintentar</button>
                         </div>
                         : ''
                         
@@ -130,7 +130,7 @@ const OrderDetail = (props) => {
                     {
                         order && order.status==='REJECTED' ?
                         <div className="row d-flex align-content-center justify-content-center">
-                        <a href={urlBase+'/home/buy'} className="btn btn-success btn-lg">Comprar</a>
+                        <a href={urlBase+'/home/buy'} className="btn btn-orange btn-lg">Comprar</a>
                         </div>
                         : ''
                     }

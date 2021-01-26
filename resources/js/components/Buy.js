@@ -10,11 +10,11 @@ const Buy = () =>{
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     
     let buyer = {
-        document:"1040030020",
+        document:"",
         documentType:"CC",
-        name:"John",
-        surname:"Doe",
-        email:"johndoe@example.com",
+        name:"",
+        surname:"",
+        email:user.email,
         address:{
             street:"742 Evergreen Terrace",
             city:"Springfield",
@@ -58,9 +58,8 @@ const Buy = () =>{
 
     const clickBtnBuy = () =>{
         
-        setStatus(0)
-
         if(validateFieldLength('document','name','surname','email')){
+            setStatus(0)
             var pepe = {user_id:user.id}
             let parameters = {
                 method:'POST',
@@ -75,7 +74,7 @@ const Buy = () =>{
                     console.log(order)
                     //update a la url que se va a enviar
                     buyRequest.returnUrl = urlBase+'/home/detail/'+order.id
-                    //console.log(buyRequest)
+
                     //enviar la info a la pasarela con la url que corresponda a la orden
                     let parameters = {
                         method:'POST',
@@ -88,6 +87,7 @@ const Buy = () =>{
                             console.log(data)
                             if(data.status.status=="OK"){
                                 let {requestId,processUrl} = data
+
                                 //update al campo url que se reciba de la pasarela de pago y referencia
                                 let parameters = {
                                     method:'POST',
@@ -98,6 +98,7 @@ const Buy = () =>{
                                 .then(res => res.json())
                                 .then((order) =>{
                                     console.log(order.id)
+
                                     //redireccionar a la url que corresponda
                                     window.location = processUrl
                                 })
@@ -161,7 +162,7 @@ const Buy = () =>{
                         {
                             status === 1 ?
                             
-                            <button className="btn btn-success btn-lg" onClick={clickBtnBuy}>Comprar</button>
+                            <button className="btn btn-lg btn-orange" onClick={clickBtnBuy}>Comprar</button>
                             
                             : <h3>Procesando Compra...</h3>
                         }

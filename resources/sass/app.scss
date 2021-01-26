@@ -5,7 +5,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 .title {
-    color: green;
+    color: #ee7d46;
     font-size: 1.2rem;
     h1 {
         font-size: 2.3rem;
@@ -22,11 +22,20 @@ li {
 }
 
 fieldset {
-    border: 2px solid green;
+    border: 2px solid #ee7d46;
     padding-left: 3%;
     padding-right: 3%;
 }
 
 legend {
     width: 34%;
+}
+
+.image {
+    max-height: 150px;
+}
+
+.btn-orange {
+    background-color: #ee7d46;
+    color: white;
 }

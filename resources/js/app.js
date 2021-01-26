@@ -18,14 +18,24 @@ require('./bootstrap');
 
 import React  from 'react'
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route,  useHistory } from 'react-router-dom'
 import Main from './components/Example'
 import Buy from './components/Buy'
 import OrderDetail from './components/OrderDetail'
 import OrdersList from './components/OrdersList'
+import OrdersUser from './components/OrdersUser'
 
-function App() {
-    const urlBase = '/evertec/public/home'
+function App(props) {
+    let url = window.location.pathname;
+    let parts = url.split('/')
+    var urlBase = "";
+    for(var i=1;i<parts.length;i++){
+        urlBase = urlBase+'/'+parts[i]
+        if(parts[i] === 'home')
+            i = parts.length
+    }
+    //console.log(urlBase);
+    //const urlBase = '/evertec/public/home'
     return (
         <BrowserRouter>
             <Route path={urlBase} exact>
@@ -34,6 +44,7 @@ function App() {
             <Route path={`${urlBase}/buy`} exact component={Buy}></Route>
             <Route path={`${urlBase}/detail/:id`} exact component={OrderDetail}></Route>
             <Route path={`${urlBase}/orders_list`} exact component={OrdersList}></Route>
+            <Route path={`${urlBase}/user/orders`} exact component={OrdersUser}></Route>
         </BrowserRouter>
     );
   }

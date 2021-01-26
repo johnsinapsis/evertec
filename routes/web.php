@@ -14,16 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('home');
-    //return view('home');
+    //return redirect('home');
+    return view('welcome2');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/buy', 'HomeController@index')->name('home');
+Route::get('/home/buy', 'HomeController@index');
 Route::get('/home/detail/{id}', 'HomeController@indexDetail');
 Route::get('/home/orders_list', 'HomeController@index');
+Route::get('/home/user/orders', 'HomeController@index');
 
 Route::post('/order','OrderController@show')->middleware(['auth']);
 Route::post('/order_user','OrderController@getOrderUser')->middleware(['auth']);
